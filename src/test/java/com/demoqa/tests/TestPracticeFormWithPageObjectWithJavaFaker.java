@@ -1,39 +1,14 @@
 package com.demoqa.tests;
 
-import com.codeborne.selenide.Configuration;
 import com.demoqa.pages.RegistrationFormPage;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-public class TestPracticeFormWithPageObjectWithJavaFaker {
-
-    // Input data
-    String firstName = "Anna";
-    String lastName = "Stone";
-    String email = "ann-stone@gmail.com";
-    String gender = "Female";
-    String phoneNumber = "8000000000";
-    String monthOfBirth = "January";
-    String yearOfBirth = "1995";
-    String dayOfBirth = "12";
-    String[] subjects = {"Maths","English","Chemistry"};
-    String[] hobbies = {"Music","Reading"};
-    String pictureName = "raccoon.jpeg";
-    String currentAddress = "Current address";
-    String state = "NCR";
-    String city = "Delhi";
+public class TestPracticeFormWithPageObjectWithJavaFaker extends TestBase {
 
     RegistrationFormPage registrationFormPage = new RegistrationFormPage();
 
-    @BeforeAll
-    static void setUp() {
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.holdBrowserOpen = true;
-    }
-
     @Test
     void fillFormWithAllData() {
-
         registrationFormPage
                 .openPage()
                 .setFirstName(firstName)
@@ -64,7 +39,6 @@ public class TestPracticeFormWithPageObjectWithJavaFaker {
 
     @Test
     void fillFormWithMinimumData() {
-
         registrationFormPage
                 .openPage()
                 .setFirstName(firstName)
