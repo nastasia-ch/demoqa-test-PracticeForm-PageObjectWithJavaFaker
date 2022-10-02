@@ -8,9 +8,8 @@ import java.util.Random;
 
 public class RandomDate {
 
-    private String[] generateRandomDate() {
+    private LocalDate generateRandomDate() {
 
-        // Генерация рандомной даты в пределах календаря из Practice Form
         Random random = new Random();
         int minDay = (int) LocalDate.of(1900, 1, 1).toEpochDay();
         int maxDay = (int) LocalDate.of(2100, 12, 31).toEpochDay();
@@ -18,34 +17,33 @@ public class RandomDate {
 
         LocalDate randomBirthDate = LocalDate.ofEpochDay(randomDay);
 
-        // Перобразование формата 01-01-2000 в формат 01 January 2000
-        DateTimeFormatter formatter = new DateTimeFormatterBuilder().parseCaseInsensitive().
-                appendPattern("dd LLLL yyyy").
-                toFormatter(Locale.US);
-
-        String changedFormatRandomBirthDate = randomBirthDate.format(formatter);
-
-        // Разделение даты на компоненты (дата, месяц, год) и запись их в массив
-        String[] componentsOfBirthDate = changedFormatRandomBirthDate.split(" ");
-
-        return componentsOfBirthDate;
+        return randomBirthDate;
     }
 
-    // Получение из массива и запись в переменную randomDay значение дня
     public String getRandomDay() {
-        String randomDay = generateRandomDate()[0];
+        DateTimeFormatter dayFormat = new DateTimeFormatterBuilder().
+                parseCaseInsensitive().
+                appendPattern("dd").
+                toFormatter(Locale.US);
+        String randomDay = generateRandomDate().format(dayFormat);
         return randomDay;
     }
 
-    // Получение из массива и запись в переменную randomMonth значение месяца
     public String getRandomMonth() {
-        String randomMonth = generateRandomDate()[1];
+        DateTimeFormatter monthFormat = new DateTimeFormatterBuilder().
+                parseCaseInsensitive().
+                appendPattern("MMMM").
+                toFormatter(Locale.US);
+        String randomMonth = generateRandomDate().format(monthFormat);
         return randomMonth;
     }
 
-    // Получение из массива и запись в переменную randomYear значение года
     public String getRandomYear() {
-        String randomYear = generateRandomDate()[2];
+        DateTimeFormatter yearFormat = new DateTimeFormatterBuilder().
+                parseCaseInsensitive().
+                appendPattern("yyyy").
+                toFormatter(Locale.US);
+        String randomYear = generateRandomDate().format(yearFormat);
         return randomYear;
     }
 
