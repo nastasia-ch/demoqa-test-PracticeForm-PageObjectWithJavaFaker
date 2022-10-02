@@ -5,7 +5,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomArray {
 
-    public String[] generateRandomArray(String[] valuesList) {
+    public String[] chooseFewRandomValuesFromArray(String[] valuesList) {
         ThreadLocalRandom random = ThreadLocalRandom.current();
         int randomNumber = random.nextInt(1, valuesList.length)+1;
         String[] values = new String[randomNumber];
@@ -19,4 +19,11 @@ public class RandomArray {
         }
         return values;
     }
+
+    public String chooseOneRandomValueFromArray(String[] valuesList) {
+        ThreadLocalRandom random = ThreadLocalRandom.current();
+        String value = valuesList[random.nextInt(valuesList.length)];
+        return value;
+    }
+
 }
