@@ -41,20 +41,25 @@ public class TestBase {
     String[] citiesNCRList = {"Delhi","Gurgaon","Noida"};
     String[] citiesUttarPradeshList = {"Agra","Lucknow","Merrut"};
     String[] citiesHaryanaList = {"Karnal","Panipat"};
+    String[] citiesRajasthan = {"Jaipur","Jaiselmer"};
 
     String state = randomArray.chooseOneRandomValueFromArray(statesList);
     String city = chooseCity();
+
     public String chooseCity() {
-        if (state == "NCR") {
-            city = randomArray.chooseOneRandomValueFromArray(citiesNCRList);
-        } else if (state == "Uttar Pradesh") {
-            city = randomArray.chooseOneRandomValueFromArray(citiesUttarPradeshList);
-        }
-        else if (state == "Haryana") {
-            city = randomArray.chooseOneRandomValueFromArray(citiesHaryanaList);
-        }
-        else if (state == "Rajasthan") {
-            city = randomArray.chooseOneRandomValueFromArray(citiesUttarPradeshList);
+        switch (state) {
+            case ("NCR"):
+                city = randomArray.chooseOneRandomValueFromArray(citiesNCRList);
+                break;
+            case ("Uttar Pradesh"):
+                city = randomArray.chooseOneRandomValueFromArray(citiesUttarPradeshList);
+                break;
+            case ("Haryana"):
+                city = randomArray.chooseOneRandomValueFromArray(citiesHaryanaList);
+                break;
+            case ("Rajasthan"):
+                city = randomArray.chooseOneRandomValueFromArray(citiesRajasthan);
+                break;
         }
         return city;
     }
